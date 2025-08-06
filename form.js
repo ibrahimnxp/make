@@ -1,24 +1,33 @@
+const form = document.getElementById("roommateForm");
+    const statusDiv = document.getElementById("status");
 
-  document.getElementById("roommateForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const form = e.target;
-    const formData = new FormData(form);
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
 
-    fetch("https://script.google.com/macros/s/AKfycby1zX9_GQFmzvG1jIUfndzlbmsWp-SMSkBtW2fnQ_NVFmZx8kFodFqo3YDzK8mOO-zS/exec", {
-      method: "POST",
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        alert("✅ Your details have been submitted successfully!");
-        form.reset();
-      } else {
-        alert("❌ Submission failed. Please try again.");
+      statusDiv.textContent = "Submitting...";
+
+      try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycby1zX9_GQFmzvG1jIUfndzlbmsWp-SMSkBtW2fnQ_NVFmZx8kFodFqo3YDzK8mOO-zS/exec", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        const result = await response.json();
+        if (result.result === "success") {
+          statusDiv.textContent = "✅ Submission successful!";
+          form.reset();
+        } else {
+          statusDiv.textContent = "❌ Error: " + result.message;
+        }
+      } catch (err) {
+        statusDiv.textContent = "❌ Failed to submit: " + err.message;
       }
-    })
-    .catch(error => {
-      console.error("Fetch Error:", error);
-      alert("⚠️ Something went wrong. Please check your internet or try again later.");
     });
-  });
+
+  </script>
