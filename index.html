@@ -9,24 +9,24 @@
 </head>
 <body>
 
-  <h2 style="text-align: center;">Roommate Finder Form</h2>
+  <h2>Submit Your Roommate Details</h2>
+
   <form id="roommateForm">
-    <input type="text" name="Name" placeholder="Your Name" required />
-    <input type="text" name="Level" placeholder="Your Level (e.g. 200L)" required />
-    <input type="text" name="Department" placeholder="Your Department" required />
-    <input type="text" name="PersonalReligion" placeholder="Your Religion" required />
-    <input type="text" name="PreferredReligion" placeholder="Preferred Religion" />
-    <input type="text" name="PreferredLevel" placeholder="Preferred Level" />
-    <input type="text" name="PreferredGender" placeholder="Preferred Gender" />
-    <input type="text" name="HostelLocation" placeholder="Hostel Location" required />
-    <input type="number" name="HostelPrice" placeholder="Hostel Price (₦)" required />
-    <input type="text" name="PaymentSchedule" placeholder="Payment Schedule" />
-    <input type="text" name="WhatsAppContact" placeholder="WhatsApp Number (e.g. 2348123456789)" required />
-    <button type="submit">Submit Your Details</button>
-    <p class="message" id="responseMessage"></p>
+    <label>Name: <input name="Name" required></label>
+    <label>Level: <input name="Level" required></label>
+    <label>Department: <input name="Department" required></label>
+    <label>Personal Religion: <input name="PersonalReligion"></label>
+    <label>Preferred Religion: <input name="PreferredReligion"></label>
+    <label>Preferred Level: <input name="PreferredLevel"></label>
+    <label>Preferred Gender: <input name="PreferredGender"></label>
+    <label>Hostel Location: <input name="HostelLocation" required></label>
+    <label>Hostel Price: <input name="HostelPrice" required></label>
+    <label>Payment Schedule: <input name="PaymentSchedule"></label>
+    <label>WhatsApp Contact (e.g. 2348012345678): <input name="WhatsAppContact" required></label>
+    <button type="submit">Submit New Details</button>
   </form>
 
-  <a href="roommates.html"><button></button></a>
+  <div id="status"></div>
 </body>
-</html>
+</html
 
